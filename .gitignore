@@ -1,0 +1,17 @@
+# Ignore Python bytecode files and __pycache__ directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# Ignore migration files and directories
+*/migrations/
+*/migrations/*.pyc
+
+# Optional: Ignore other specific directories if needed
+ecommerce/__pycache__/
+orders/__pycache__/
+payments/__pycache__/
+shop/__pycache__/
+users/__pycache__/
