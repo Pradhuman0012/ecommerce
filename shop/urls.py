@@ -1,6 +1,9 @@
-from django.urls import path
-from .views import HomePageView
+from django.urls import path, include
+from .views import home, logout_view
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+    path('', home, name='home'),
+    path('logout/', logout_view, name='logout'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    
 ]

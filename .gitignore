@@ -4,12 +4,11 @@ __pycache__/
 *.pyo
 *.pyd
 
-
 # Ignore migration files and directories
 */migrations/
 */migrations/*.pyc
 
-# Optional: Ignore other specific directories if needed
+# Ignore specific directories
 ecommerce/__pycache__/
 orders/__pycache__/
 payments/__pycache__/

@@ -1,0 +1,17 @@
+<!-- user_profile.html -->
+{% extends 'shop/base.html' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>User Profile</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Hello, {{ user.username }}!</h5>
+            <p class="card-text">Email: {{ user.email }}</p>
+            <!-- Add more user information here -->
+        </div>
+    </div>
+</div>
+{% endblock %}
