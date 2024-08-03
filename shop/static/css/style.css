@@ -1,0 +1,69 @@
+/* Custom styles for the e-commerce site */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Hero Section */
+.hero {
+    background: url('/static/images/hero-background.jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: #343a40;
+}
+
+/* Features Section */
+.features .feature {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.features h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.features p {
+    font-size: 1rem;
+}
+
+/* Call to Action Section */
+.cta {
+    background: #343a40;
+    color: #fff;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
