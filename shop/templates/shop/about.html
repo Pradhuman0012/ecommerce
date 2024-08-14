@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - My E-commerce Site{% endblock %}
+
+{% block content %}
+<!-- About Section -->
+<section class="about py-5">
+    <div class="container">
+        <h1 class="display-3 font-weight-bold mb-4">About Us</h1>
+        <p class="lead mb-4">Welcome to our e-commerce site! We are dedicated to providing you with the best products and the highest level of customer service.</p>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h2 class="font-weight-bold mb-3">Our Mission</h2>
+                <p>Our mission is to offer a curated selection of high-quality products at competitive prices. We strive to exceed our customers' expectations with every purchase, delivering a seamless shopping experience from start to finish.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h2 class="font-weight-bold mb-3">Our Story</h2>
+                <p>Founded in 2024, our company started with a simple idea: to make shopping easier and more enjoyable. What began as a small venture has grown into a thriving online store, thanks to our commitment to quality and customer satisfaction.</p>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Back to Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

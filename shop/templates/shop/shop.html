@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Shop - My E-commerce Site{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1>Welcome to the Shop</h1>
+        <p>Browse our collection of products below.</p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Example product card -->
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEw2ce40BkWdXvgMffW8BefaU8jogoAzSNDA&s" class="card-img-top" alt="Product Name">
+            <div class="card-body">
+                <h5 class="card-title">Product Name</h5>
+                <p class="card-text">This is a short description of the product. It provides basic details about the product's features and benefits.</p>
+                <a href="#" class="btn btn-primary">View Product</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Repeat product card block for additional products -->
+</div>
+{% endblock %}

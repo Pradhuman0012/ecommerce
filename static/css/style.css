@@ -1,0 +1,83 @@
+/* Custom styles for the e-commerce site */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #424a53; /* Primary color for the hero section */
+    color: #fff;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Features Section */
+.features {
+    background-color: #ffffff; /* White background for the features section */
+}
+
+.features .feature {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f8f9fa; /* Light gray background for individual features */
+}
+
+.features h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.features p {
+    font-size: 1rem;
+}
+
+/* Call to Action Section */
+.cta {
+    background-color: #343a40; /* Dark background for the CTA section */
+    color: #fff;
+    padding: 4rem 1rem;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}

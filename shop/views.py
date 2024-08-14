@@ -11,6 +11,13 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     return render(request, 'shop/home.html')
 
+def about(request):
+    return render(request, 'shop/about.html')
+
+@login_required
+def shop(request):
+    return render(request, 'shop/shop.html')
+
 
 def logout_view(request):
     return render(request, 'registration/logout.html')

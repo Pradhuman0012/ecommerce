@@ -1,4 +1,4 @@
-{% extends 'shop/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Logout{% endblock %}
 
@@ -6,6 +6,6 @@
     <div class="text-center mt-5">
         <h1>Thank you for visiting!</h1>
         <p>You have been successfully logged out.</p>
-        <a href="{% url 'login' %}" class="btn btn-primary">Click here to log in again</a>
+        <a href="{% url 'login' %}" class="btn btn-light btn-lg rounded-pill shadow-lg">Click here to log in again</a>
     </div>
 {% endblock %}

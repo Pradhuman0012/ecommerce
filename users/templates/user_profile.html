@@ -1,15 +1,19 @@
 <!-- user_profile.html -->
-{% extends 'shop/base.html' %}
-
+{% extends 'base.html' %}
+{% load static %}
 {% block title %}User Profile{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>User Profile</h1>
-    <div class="card">
+<div class="container my-5">
+    <h1 class="text-center mb-4">User Profile</h1>
+    <div class="card mx-auto" style="max-width: 600px;">
         <div class="card-body">
-            <h5 class="card-title">Hello, {{ user.username }}!</h5>
-            <p class="card-text">Email: {{ user.email }}</p>
+            <div class="text-center mb-4">
+                <!-- Optional: Add user avatar or profile picture here -->
+                <img src="https://www.paralysistreatments.com/wp-content/uploads/2018/02/no_profile_img.png" class="rounded-circle img-fluid" alt="User Avatar" style="width: 120px; height: 120px;">
+                <h5 class="card-title mt-3">Hello, {{ user.username }}!</h5>
+            </div>
+            <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
             <!-- Add more user information here -->
         </div>
     </div>
