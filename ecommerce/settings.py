@@ -52,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'shop.middleware.AppMaintenanceMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -134,3 +135,5 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/logout'
+
+MAINTENANCE_MODE=False
