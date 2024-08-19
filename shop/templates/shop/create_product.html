@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Form - My E-commerce Site{% endblock %}
+
+{% block extra_head %}
+<style>
+
+    /* Custom CSS to ensure labels are left-aligned */
+.form-group label {
+    text-align: left; /* Aligns text to the left */
+    display: block; /* Ensures label takes up full width of parent */
+    margin-bottom: 0.5rem; /* Space below label */
+}
+
+/* Optionally, you can also reset padding/margin on form controls if needed */
+.form-control, .form-control-file {
+    margin-top: 0; /* Adjust top margin if needed */
+}
+    
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Add Product</h2>
+    <form action="/create_product/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- Form rows and columns -->
+        <div class="form-row mb-3">
+            <div class="form-group col-md-4">
+                <label for="category" class="font-weight-bold">Category:</label>
+                <select id="category" name="category" class="form-control" required>
+                    <!-- Populate with categories from your database -->
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="price" class="font-weight-bold">Price:</label>
+                <input type="number" id="price" name="price" class="form-control" step="0.01" min="0" required>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="stock" class="font-weight-bold">Stock:</label>
+                <input type="number" id="stock" name="stock" class="form-control" min="0" required>
+            </div>
+        </div>
+
+        <div class="form-row mb-3">
+            <div class="form-group col-md-12">
+                <label for="name" class="font-weight-bold">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" maxlength="255" required>
+            </div>
+        </div>
+
+        <div class="form-row mb-3">
+            <div class="form-group col-md-12">
+                <label for="description" class="font-weight-bold">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="form-row mb-3">
+            <div class="form-group col-md-12">
+                <label for="image" class="font-weight-bold">Image:</label>
+                <input type="file" id="image" name="image" class="form-control-file">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
