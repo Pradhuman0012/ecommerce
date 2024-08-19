@@ -37,6 +37,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'create_product' %}">Create Product</a>
+                        <a class="dropdown-item" href="{% url 'create_category' %}">Create Category</a>
+                        <a class="dropdown-item" href="{% url 'category_list' %}">Category List</a>
+                        <a class="dropdown-item" href="{% url 'product_list' %}">Product List</a>
+                    </div>
+                </li>
+
             </ul>
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
