@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db import DatabaseError
-from .forms import ProductForm, CategoryForm
-
+from .forms import ProductForm, CategoryForm, OrderForm
+from django.http import HttpResponse
 # Create your views here.
 
 def home(request):
@@ -11,13 +11,31 @@ def home(request):
 def about(request):
     return render(request, 'shop/about.html')
 from .models import Product, Category
+
+
 @login_required
 def shop(request):
-    product = get_all_products()
-    data={
-        'product':product
+    # Retrieve all categories for the filter
+    categories = get_all_categories()
+    products = get_all_products()
+
+    # Extract search query and category filter from GET parameters
+    search_query = request.GET.get('search', '')
+    category_id = request.GET.get('category', '')
+    
+    if search_query:
+        products = products.filter(name__icontains=search_query)
+    
+    if category_id:
+        products = products.filter(category_id=category_id)
+
+    # Prepare data for rendering
+    data = {
+        'product': products,
+        'categories': categories,
     }
-    return render(request, 'shop/shop.html',data)
+
+    return render(request, 'shop/shop.html', data)
 
 
 def logout_view(request):
@@ -66,3 +84,29 @@ def category_list_view(request):
 def product_list_view(request):
     products = get_all_products()
     return render(request, 'shop/product_list.html', {'products': products})
+
+def order_confirmation(request):
+    return render(request, 'order_confirmation.html')
+
+
+@login_required
+def buy_now(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+
+    return render(request, 'shop/buy_now.html', {'product': product})
+
+def place_order(request):
+    print("=============REQUEST================",request.POST)
+    form = OrderForm(request.POST)
+    if form.is_valid():
+        order = form.save(commit=False)
+        product = get_object_or_404(Product, id=order.product.id)
+        if product.stock > 0:
+                # Reduce stock
+                product.stock -= 1
+                product.save()
+
+                # Save the order
+                order.save()
+
+    return redirect('order_confirmation')

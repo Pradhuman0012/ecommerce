@@ -1,14 +1,18 @@
 from django.urls import path, include
-from .views import home, logout_view, about, shop, create_product, create_category, category_list_view, product_list_view
+from shop import views
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('about/', about, name='about'),
-    path('shop/', shop, name='shop'),
-    path('create_product/', create_product, name='create_product'),
-    path('create_category/', create_category, name='create_category'),
-    path('category_list/', category_list_view, name='category_list'),
-    path('product_list/', product_list_view, name='product_list'),
-    path('logout/', logout_view, name='logout'),
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('shop/', views.shop, name='shop'),
+    path('place_order/', views.place_order, name='place_order'),
+    path('create_product/', views.create_product, name='create_product'),
+    path('create_category/', views.create_category, name='create_category'),
+    path('category_list/', views.category_list_view, name='category_list'),
+    path('product_list/', views.product_list_view, name='product_list'),
+    path('product/<int:pk>/buy/', views.buy_now, name='buy_now'),
+    path('order_confirmation/', views.order_confirmation, name='order_confirmation'),
+    path('logout/', views.logout_view, name='logout'),
+    
     path('accounts/', include('django.contrib.auth.urls')),
 ]

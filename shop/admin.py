@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, Order
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -15,3 +15,10 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category', 'created_at', 'price')
     ordering = ('-created_at',)
     list_editable = ('price', 'stock')
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'payment_method', 'created_at')
+    search_fields = ('product',)
+    list_filter = ('payment_method',)
+    ordering = ('-created_at',)

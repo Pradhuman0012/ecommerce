@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Category
+from .models import Product, Category, Order
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -38,3 +38,8 @@ class CategoryForm(forms.ModelForm):
         if Category.objects.filter(name=name).exists():
             raise forms.ValidationError("A category with this name already exists.")
         return name
+    
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = '__all__'
