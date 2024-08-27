@@ -18,7 +18,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'payment_method', 'created_at')
-    search_fields = ('product',)
-    list_filter = ('payment_method',)
-    ordering = ('-created_at',)
+    list_display = ('user', 'product', 'payment_method','amount' ,'created_at')
+    list_filter = ('created_at', 'payment_method')
+    search_fields = ('user__email', 'product__name')

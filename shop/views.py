@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import DatabaseError
 from .forms import ProductForm, CategoryForm, OrderForm
 from django.http import HttpResponse
+from .models import Order
+from decimal import Decimal
 # Create your views here.
 
 def home(request):
@@ -96,17 +98,35 @@ def buy_now(request, pk):
     return render(request, 'shop/buy_now.html', {'product': product})
 
 def place_order(request):
-    print("=============REQUEST================",request.POST)
-    form = OrderForm(request.POST)
-    if form.is_valid():
-        order = form.save(commit=False)
-        product = get_object_or_404(Product, id=order.product.id)
-        if product.stock > 0:
-                # Reduce stock
-                product.stock -= 1
-                product.save()
+    if request.method == 'POST':
+        product_id = request.POST.get('product')
+        quantity = int(request.POST.get('quantity'))
+        payment_method = request.POST.get('payment_method')
 
-                # Save the order
-                order.save()
+        try:
+            product = Product.objects.get(id=product_id)
+        except Product.DoesNotExist:
+            return HttpResponse("Product not found", status=404)
 
-    return redirect('order_confirmation')
+        if product.stock <= 0:
+            return HttpResponse("Sorry, this product is out of stock.", status=400)
+
+        if quantity > product.stock:
+            return HttpResponse("The quantity requested exceeds the available stock.", status=400)
+
+        # Calculate the total amount
+        amount = Decimal(product.price) * quantity
+
+        # Create the order
+        Order.objects.create(
+            user=request.user,
+            product=product,
+            payment_method=payment_method,
+            amount=amount
+        )
+
+        # Optionally, you can redirect to a success page or show a confirmation message
+        return redirect('order_confirmation')
+
+    # Render the order form if not POST request
+    return HttpResponse('some error occur')
