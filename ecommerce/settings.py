@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -139,4 +139,30 @@ MEDIA_ROOT = BASE_DIR/ 'media'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/logout'
 
+# enable MAINTENANCE_MODE to see MAINTENANCE screen
 MAINTENANCE_MODE=False
+
+# settings.py
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+
+# celery -A ecommerce worker -l info
+# celery -A ecommerce worker -l info -P eventlet
+
+
+# email configration
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'projecttest103@gmail.com'
+EMAIL_HOST_PASSWORD = 'zjkc urit thqj dejh'
+DEFAULT_FROM_EMAIL = 'projecttest103@gmail.com'
+

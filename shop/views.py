@@ -5,9 +5,11 @@ from .forms import ProductForm, CategoryForm, OrderForm
 from django.http import HttpResponse
 from .models import Order
 from decimal import Decimal
+from .tasks import send_order_confirmation_email, test_task
 # Create your views here.
 
 def home(request):
+    test_task.delay()
     return render(request, 'shop/home.html')
 
 def about(request):
@@ -102,6 +104,7 @@ def place_order(request):
         product_id = request.POST.get('product')
         quantity = int(request.POST.get('quantity'))
         payment_method = request.POST.get('payment_method')
+        user_email = request.POST.get('email')
 
         try:
             product = Product.objects.get(id=product_id)
@@ -117,13 +120,29 @@ def place_order(request):
         # Calculate the total amount
         amount = Decimal(product.price) * quantity
 
+        #update stock
+        product.stock -= quantity
+        product.save()
+
         # Create the order
-        Order.objects.create(
+        order =Order.objects.create(
             user=request.user,
             product=product,
             payment_method=payment_method,
             amount=amount
         )
+
+        # Trigger the Celery task to send an email
+        print("===user_email===",user_email)
+        print("==order.id==",order.id)
+        send_order_confirmation_email.delay(
+            user_email,
+            order.id,
+            order.product.name,
+            quantity,
+            payment_method,
+            amount
+            )
 
         # Optionally, you can redirect to a success page or show a confirmation message
         return redirect('order_confirmation')
