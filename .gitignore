@@ -15,3 +15,4 @@ payments/__pycache__/
 shop/__pycache__/
 users/__pycache__/
 ecom_venv/
+.env
