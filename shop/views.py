@@ -149,3 +149,18 @@ def place_order(request):
 
     # Render the order form if not POST request
     return HttpResponse('some error occur')
+
+
+def oderHistory(request,user):
+    order_history= Order.objects.filter(user=user).order_by('-created_at')
+    # Get distinct payment methods from orders
+    used_payment_methods = Order.objects.values_list('payment_method', flat=True).distinct()
+    payment_method = request.GET.get('payment_method', '')
+    search_query = request.GET.get('search', '')
+    
+    if search_query:
+        order_history = Order.objects.filter(product__name__icontains=search_query).order_by('-created_at')
+    if payment_method:
+        order_history= Order.objects.filter(user=user,payment_method = payment_method).order_by('-created_at')
+
+    return render(request, 'shop/order_history.html',{'order_history':order_history,'used_payment_methods':used_payment_methods})

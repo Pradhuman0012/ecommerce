@@ -1,5 +1,10 @@
 Django eCommerce Website
 
+
+start redis server: sudo redis-server
+start celery worker: celery -A ecommerce worker -l info -P eventlet 
+
+
 Description:
 
 This project is a comprehensive eCommerce website built with Django, designed to provide a complete online shopping experience. 

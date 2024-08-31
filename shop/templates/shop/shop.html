@@ -59,7 +59,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" name="search" placeholder="Search products" value="{{ request.GET.search }}">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Search</button>
+                        <button class="btn btn-dark" type="submit">Search</button>
                     </div>
                 </div>
             </form>
@@ -91,7 +91,7 @@
                     <p class="card-category">{{ item.category.name }}</p>
                     <p class="card-text text-muted">{{ item.description|slice:":25" }}{% if item.description|length > 25 %}...{% endif %}</p>
                     <h6 class="card-price mb-3">{{ item.price }}</h6>
-                    <a href="{% url 'buy_now' item.pk %}" class="btn btn-primary">Buy Now</a>
+                    <a href="{% url 'buy_now' item.pk %}" class="btn btn-dark">Buy Now</a>
                 </div>
             </div>
         </div>

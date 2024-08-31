@@ -152,7 +152,7 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'UTC'
 
-
+# redis-server
 # celery -A ecommerce worker -l info
 # celery -A ecommerce worker -l info -P eventlet
 

@@ -12,6 +12,7 @@ urlpatterns = [
     path('product_list/', views.product_list_view, name='product_list'),
     path('product/<int:pk>/buy/', views.buy_now, name='buy_now'),
     path('order_confirmation/', views.order_confirmation, name='order_confirmation'),
+    path('oderHistory/<int:user>', views.oderHistory, name='oderHistory'),
     path('logout/', views.logout_view, name='logout'),
     
     path('accounts/', include('django.contrib.auth.urls')),

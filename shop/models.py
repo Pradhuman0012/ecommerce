@@ -39,6 +39,5 @@ class Order(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     
-    def __str__(self):
-        return f'Order {self.id} by {self.user.email if self.user.email else "unknown user"}'
+    
 
